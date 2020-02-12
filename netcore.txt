@@ -1,0 +1,131 @@
+Nuget benefits:
+Better performance gain
+Secured application
+improved and reduced servicing
+Pay for what you use model
+lightweight
+
+.NET CORE
+Flexible deployment
+Cross-platform
+Command-line tools
+Compatiable with .NET Framework, Xammarin and Mono via the .NET Standard Library
+build-in support for dependency injection
+cloud-ready
+build-in logging (serilog)
+
+WebhostBuilder() 
+It is use to build up the HTTP pipeline via webHostBuilder.use() chaining it all together with WebHostBuilder.Build() by using the builder pattern. 
+It is available within the Microsoft.AspNet.Hosting namespace. THe purpose of the Build method is to build the required services and 
+a Microsoft.AspNetCoreHosting.IWebHost which hosts a weba applocation
+
+UserIISIntergration
+UserIISIntergration configures the port and base path the server should listen on when running behind Asp Net Core Module. The app will aslo be configured
+to capture startup errors. Web HostBuilder uses the UserIISIntergration for hosting in IIS and IIS Express
+
+ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseMvc();
+        }
+
+app.UseDeveloperExceptionPage 
+this method belongs to the Microsoft.AspNetCoreBuilder namespace of UseDeveloperExceptionPage Extensions static class.
+The purpose of this function is to capture synchronouse and asynchronous System.Exception instances from the pipeline asn generates HTML error responses.
+It returns a reference to the app after the operation s completed. We use the UseDeveloperExceptionPage() extension method render the exception during
+the development mode.
+
+AddSingleton
+The AddSingleton method, adds a singleton serivce of tpye specified in TService with an implmentation type specified in TImplementation to the specified
+Microsoft.Extensions.DependencyInjection.IServiceCollection. It returns a reference to this instance after the operation has completed.
+The general syntax is 
+public static IServiceCollection AddSignleton TService,TImplenetation(this IServiceCollection service) where TService:class whre TImplementation: class, TService;
+
+Transfer-encoding:
+The encoding used to transfer the entity to the user. It is set to Chunked indicating that Chunked transfer encoding data transfer mechanism of the HTTP
+is initiated in which data is sent in a series of "chunks"
+
+X-sourcefules
+it is the custom header. It contains the base64-encoded path to the source file on disk and is used to link a page's generated output back to that source file.
+It's only generated for localhost requests.
+
+How to Scaffold Model From Existing Database in Asp.Net Mvc Core?
+Tools ->Nuget Package Manager ->Package Manager Console and Execute:
+Scoffold-DbContext "Server=Database-PC; Database=TrainingDatabase;Trusted_Connection=True;MultipleActiveResulSets=true;" Microsoft.EntityFrameworkCore.SqlServer
+  -OutputDir Models
+
+.net core
+A Cross-platform version of .NET, that suports almost all thing that .NET supported(except thing like WPF, WIndows forms, and Active Directory)
+It is leaner, faster and improved version of .NET
+Open Source
+.NET core provides dotnet cli command line interface
+
+.net standard
+.NET standard is a set of APIs that all .NET platforms have to implement. This unifies the .NET platforms and prevents future fragmentaton
+.NET standard 2.0 is implemented by .NET framework, .NET Core, and Xamarin. For .NET Core, this added many of the existing APIs that have been requested.
+.NET standard 2.0 includes a compatibility shim for .NET Framework binaries, singificatnly increasing the set of libraries that you can reference from 
+    your .NET Standard libraries
+.NET standard will replace Portable Class Libraries(PCLs) as the tooling story for building multi-platform .NET libraries
+
+
+ConfigureServices() method 
+It is the place to add services required by the application
+
+services.AddTransient objects are created for every request. This lifetime works best for lightweight, stateless service
+services.AddScoped objects are the same within a request, but different accross different
+services.AddSingleton objects created the first time they're requested (or when COnfigureServices is run and an instance is specified with the service registration)
+
+ASP.NET Core Module(ANCM)
+ ASP.NET Core Module lets you run ASP.NET Core applications behind IIS and it works only with Kestrel; It isn't compatible with WebListener. 
+ ANCM is a native IIS module that hooks into the IIS pipeline and redirects traffic to the backend ASP.NET Core application. 
+ ASP.NET Core application run in a process separate from the IIS worker process. 
+ ANCM also oes process management. 
+ ANCM starts the process for the ASP.NET Core application when the first request comes in and restarts it when it crashes. 
+   In short, it sits in IIS and routes the request for ASP.NET Core application to Kestral
+  
+bunding and minification asp.net core
+Gulp
+BundlerMinifier
+ASP.NET Core Web Optimizer
+Grunt
+
+launchsetting.json
+This json file holds project specific settings associated with each debug mode, Visual Studio is configured to use to launch the application,
+  including any environment variables that should be used. You can define framework for your project for compilation and debugging for specific profiles.
+  This file is placed in Properties folder.
+
+Razor page
+Razor page is a simple page or view without controllers. Razor page uses handler methods to deal with incoming HTTP request
+
+Dependency Injection
+ASP.NET Core supports the dependency injection (DI) software design pattern, which is a technique for achieving Inversion of Control (IoC) 
+between classes and their dependencies.
+
+ConfigureServices
+ This is an optional method of startup class. It can be used to configure the services that are used by the application. This mehtod calls first when 
+ the application is requested for the first time. Using this method, we can add the services to the DI Container, so services are available as as dependency
+ in controller constructor
+Configure method
+ It defines how the application will respond to each HTTP request. We can configure the request pipeline by configuring the middleware. 
+ It accepts IApplicationBuilder as a parameter and also it has two optional parameters: IHostingEnvironment and ILoggerFactory. Using this method,
+ we can configure built-in middleware such as routing, authentication, session ,etc, as well as third-party middleware.
+Routing:
+  Conventional routing
+  Attribute routing
+  routing uses routers for map incoming request with route handler and generate url that used in response.
+Json files:
+  global.json
+  launchsettings.json
+  appsettings.json
+  bundleconfig.json
+  bower.json
+  package.json
